@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-text-wrapper">
+                <h1>LUNOTECH</h1>
+            </div>
+            <div class="loading-bar-container">
+                <div id="loading-bar" class="loading-bar"></div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+<main class="flex-1">
+  <section class="hero-section">
+    <div class="canvas-container"
+         id="canvas-container"
+                  data-mountain-url="{% static 'images/mountain.png' %}"
+         data-moon-url="{% static 'images/moon.jpg' %}">
+
+    </div>
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1 class="hero-title">نوآوری، فراتر از مرزهای دیجیتال</h1>
+        <p class="hero-description">
+          به کمک ما هویت دیجیتال خود را خلق کنید <br/>
+          گروه طراحی برند و وب‌سایت لونوتک
+        </p>
+        <div class="hero-buttons">
+          <button class="btn btn-primary">Begin Mission</button>
+          <button class="btn btn-outline">Learn More</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="services-section">
+    <div class="ambient-bg"></div>
+    <div class="ambient-light-1"></div>
+    <div class="ambient-light-2"></div>
+    <div class="container-services">
+      <div class="header-services">
+        <h2>خدمات ما برای رشد کسب‌وکار شما</h2>
+        <p>ما با ارائه راهکارهای یکپارچه، شما را در مسیر موفقیت همراهی میکنیم</p>
+      </div>
+      <div class="services-grid" id="servicesGrid">
+        </div>
+    </div>
+    <div class="modal-overlay" id="modalOverlay">
+      <div class="modal-content" id="modalContent">
+        <button class="close-btn" id="closeBtn">×</button>
+        <div class="modal-body" id="modalBody">
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee-container">
+    <div class="gradient-overlay"></div>
+    <div class="marquee-content" id="marqueeContent">
+      </div>
+  </div>
+
+  <section class="grok-blog-section">
+    <div class="grok-blog-container">
+      <div class="grok-blog-header grok-blog-fade-in">
+        <div class="grok-blog-header-content">
+          <h1 class="grok-blog-main-title">آخرین اخبار و رویدادها</h1>
+          <a class="grok-blog-explore-btn" href="{% url 'blog_list' %}">مشاهده همه اخبار</a>
+        </div>
+      </div>
+      <div class="grok-blog-posts">
+        {% for post in posts %}
+        <article class="grok-blog-post grok-blog-slide-up">
+          <div class="grok-blog-top-line"></div>
+          <div class="grok-blog-post-grid">
+            <div class="grok-blog-post-content">
+              <div class="grok-blog-post-date">{{ post.date|date:"Y-m-d" }}</div>
+              <h2 class="grok-blog-post-title">{{ post.title }}</h2>
+              <p class="grok-blog-post-description">
+                {{ post.description|truncatechars:220 }}
+              </p>
+              <div class="grok-blog-post-footer">
+                <a class="grok-blog-read-btn" href="{{ post.get_absolute_url }}">اطلاعات بیشتر</a>
+              </div>
+            </div>
+            <div class="grok-blog-post-image">
+              <div class="grok-blog-image-container">
+                {% if post.image %}
+                <img alt="{{ post.title }}" src="{{ post.image.url }}"/>
+                {% endif %}
+                <div class="grok-blog-gradient-overlay grok-blog-gradient-purple"></div>
+                <div class="grok-blog-dark-overlay"></div>
+              </div>
+            </div>
+          </div>
+        </article>
+        {% empty %}
+        <p>مطلبی ثبت نشده است.</p>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}

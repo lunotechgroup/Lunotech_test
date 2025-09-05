@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{{ post.title }} - Blog - Lunotech{% endblock %}
+{% block content %}
+<article class="blog-detail">
+  <header class="blog-detail-header">
+    <h1>{{ post.title }}</h1>
+    <div class="meta">
+      <time datetime="{{ post.date|date:'Y-m-d' }}">{{ post.date|date:"Y-m-d" }}</time>
+      <span> | </span>
+      <span>{{ post.creator_name }} - {{ post.creator_job_title }}</span>
+    </div>
+  </header>
+  {% if post.image %}
+    <div class="blog-detail-image">
+      <img src="{{ post.image.url }}" alt="{{ post.title }}"/>
+    </div>
+  {% endif %}
+  <div class="blog-detail-content">
+    <p>{{ post.description|linebreaks }}</p>
+  </div>
+</article>
+{% endblock %}

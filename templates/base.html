@@ -1,0 +1,203 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{% block title %}Lunotech{% endblock %}</title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+  {% block head_extra %}{% endblock %}
+</head>
+<body>
+
+
+
+
+ <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <!-- Logo -->
+                <div class="logo">
+                    <img src="{% static 'images/logo.png' %}" alt="Logo" class="logo-img">
+                </div>
+
+                <!-- Navigation Items -->
+                <div class="nav-items">
+
+                  <a class="nav-item {% if request.resolver_match.url_name == 'home' %}active{% endif %}" href="{% url 'home' %}">Home</a>
+
+                  <a class="nav-item {% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="">About</a>
+
+                  <a class="nav-item {% if request.resolver_match.url_name == 'services' %}active{% endif %}" href="">Services</a>
+
+                  <a class="nav-item {% if request.resolver_match.url_name == 'blog_list' %}active{% endif %}" href="{% url 'blog_list' %}">Blog</a>
+                    
+                    <!-- Language Selector -->
+                    <div class="dropdown">
+                        <button class="dropdown-trigger">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                            <path d="M2 12h20"></path>
+                        </svg>
+                             English
+                            <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6,9 12,15 18,9"></polyline>
+                            </svg>
+                        </button>
+                        <div class="dropdown-content">
+                            <div class="dropdown-item"> English</div>
+                            <div class="dropdown-item"> فارسی</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Desktop Right Side Actions -->
+                <div class="desktop-actions">
+                    <a href="{% url 'contact' %}"><button class="contact-btn">Contact Us</button></a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="mobile-menu-btn">
+                    <button class="menu-toggle">
+                        <svg class="menu-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                        <svg class="close-icon hidden" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+            </nav>
+
+            <!-- Mobile Menu -->
+            <div class="mobile-menu">
+                <div class="mobile-menu-content">
+                    <div class="mobile-menu-header">
+                        <button class="mobile-close-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="mobile-nav-items">
+                        <a class="mobile-nav-item {% if request.resolver_match.url_name == 'home' %}active{% endif %}" href="{% url 'home' %}">Home</a>
+                        <a class="mobile-nav-item {% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="">About</a>
+                        <a class="mobile-nav-item {% if request.resolver_match.url_name == 'services' %}active{% endif %}" href="">Services</a>
+                        <a class="mobile-nav-item {% if request.resolver_match.url_name == 'blog_list' %}active{% endif %}" href="{% url 'blog_list' %}">Blog</a>
+                    </div>
+
+                    <div class="mobile-actions">
+                      <a href="{% url 'contact' %}"><button class="mobile-contact-btn">Contact Us</button></a>
+                        
+                        <div class="mobile-dropdown">
+                            <button class="mobile-dropdown-trigger">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                                        <path d="M2 12h20"></path>
+                                    </svg>
+                                <span>
+
+                                     English
+                                </span>
+                                <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="6,9 12,15 18,9"></polyline>
+                                </svg>
+                            </button>
+                            <div class="mobile-dropdown-content">
+                                <div class="mobile-dropdown-item"> English</div>
+                                <div class="mobile-dropdown-item"> فارسی</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Overlay -->
+            <div class="mobile-overlay"></div>
+        </div>
+    </header>
+
+
+
+
+
+
+  {% comment %} <header class="header">
+    <div class="container">
+      <nav class="navbar">
+        <div class="logo">
+          <a href="{% url 'home' %}"><img alt="Logo" class="logo-img" src="{% static 'images/logo.png' %}"/></a>
+        </div>
+        <div class="nav-items">
+          <a class="nav-item" href="{% url 'home' %}">Home</a>
+          <a class="nav-item" href="#">About</a>
+          <a class="nav-item" href="#">Services</a>
+          <a class="nav-item" href="{% url 'blog_list' %}">Blog</a>
+        </div>
+        <div class="desktop-actions">
+          <a href="{% url 'contact' %}"><button class="contact-btn">Contact Us</button></a>
+        </div>
+        <div class="mobile-menu-btn">
+          <button class="menu-toggle">
+            <svg class="menu-icon" fill="none" height="24" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="24">
+              <line x1="3" x2="21" y1="6" y2="6"></line>
+              <line x1="3" x2="21" y1="12" y2="12"></line>
+              <line x1="3" x2="21" y1="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header> {% endcomment %}
+
+  {% block content %}{% endblock %}
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="copyright">
+          © 2025 Lunotech
+        </div>
+      </div>
+      <div class="footer-main">
+        <div class="cta-section">
+          <p class="cta-text">
+            HAVE A PROJECT IN MIND?
+          </p>
+        </div>
+        <div class="background-text">
+          <h2 class="large-text">LUNOTECH</h2>
+        </div>
+      </div>
+      <div class="footer-credits">
+        <div class="credits-content">
+          <span class="separator">•</span>
+          <span>
+            Development by <span class="credit-name">Arash rasouly &amp;&amp; Amir karimi</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+  {% comment %} This passes the correct static paths to your main JavaScript file {% endcomment %}
+  <script>
+    const MOON_TEXTURE_URL = "{% static 'images/moon.jpg' %}";
+    const MOUNTAIN_TEXTURE_URL = "{% static 'images/mountain.png' %}";
+  </script>
+  <script src="{% static 'js/script.js' %}"></script>
+
+  {% block body_extra %}{% endblock %}
+</body>
+</html>

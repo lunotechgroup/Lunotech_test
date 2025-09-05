@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}وبلاگ - Lunotech{% endblock %}
+{% block content %}
+<section class="grok-blog-section">
+  <div class="grok-blog-container">
+    <div class="grok-blog-header grok-blog-fade-in">
+      <div class="grok-blog-header-content">
+        <h1 class="grok-blog-main-title">آخرین اخبار و رویدادها</h1>
+      </div>
+    </div>
+    <div class="grok-blog-posts">
+      {% for post in posts %}
+      <article class="grok-blog-post grok-blog-slide-up">
+        <div class="grok-blog-post-grid">
+          <div class="grok-blog-post-content">
+            <div class="grok-blog-post-date">{{ post.date|date:"Y-m-d" }}</div>
+            <h2 class="grok-blog-post-title"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+            <p class="grok-blog-post-description">{{ post.description|truncatechars:240 }}</p>
+            <div class="grok-blog-post-footer">
+              <a class="grok-blog-read-btn" href="{{ post.get_absolute_url }}">ادامه مطلب</a>
+            </div>
+          </div>
+          <div class="grok-blog-post-image">
+            {% if post.image %}<img alt="{{ post.title }}" src="{{ post.image.url }}"/>{% endif %}
+          </div>
+        </div>
+      </article>
+      {% empty %}
+      <p>هنوز مطلبی منتشر نشده است.</p>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}
