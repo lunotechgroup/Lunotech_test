@@ -25,7 +25,7 @@ SECRET_KEY = env('SECRET_KEY')
 DEBUG = env('DEBUG')
 
 # Define the allowed hosts for your application
-ALLOWED_HOSTS = ['yourdomain.com', 'www.yourdomain.com', '127.0.0.1', '0.0.0.0']
+ALLOWED_HOSTS = ['yourdomain.com', 'www.yourdomain.com', '127.0.0.1', '0.0.0.0', 'lunotech-test.onrender.com']
 
 # --- Application Definition ---
 
@@ -111,4 +111,5 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # --- Default Primary Key Field Type ---
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
